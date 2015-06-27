@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Hello React!</title>
+    <title>Song Getter</title>
     <script src="static/js/lib/react.js"></script>
     <script src="static/js/lib/jquery.min.js"></script>
   </head>
