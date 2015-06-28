@@ -5,7 +5,15 @@ import (
 	"github.com/astaxie/beego"
 )
 
-func main() {
-	beego.Run()
+func configureStaticPath() {
+	beego.DelStaticPath("/static")
+	beego.SetStaticPath("/js", "static/js")
+	beego.SetStaticPath("/css", "static/css")
+	beego.SetStaticPath("/font", "static/font")
+	beego.SetStaticPath("/img", "static/img")
 }
 
+func main() {
+	configureStaticPath()
+	beego.Run()
+}
