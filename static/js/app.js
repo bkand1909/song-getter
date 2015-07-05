@@ -2,7 +2,8 @@ var Box = React.createClass({displayName: "Box",
 	render: function() {
 		return (
 			React.createElement("div", {className: "Box"}, 
-				React.createElement("input", {placeholder: "Test"})
+				React.createElement("input", {placeholder: "Test"}), 
+				React.createElement("a", {className: "waves-effect waves-light btn"}, "Click")
 			)
 		);
 	}

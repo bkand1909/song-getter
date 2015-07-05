@@ -1,8 +1,8 @@
 package main
 
 import (
-	_ "bkand1909/song-getter/routers"
 	"github.com/astaxie/beego"
+	_ "github.com/bkand1909/song-getter/routers"
 )
 
 func configureStaticPath() {

@@ -1,7 +1,7 @@
 package utils
 
 import (
-	"bkand1909/song-getter/models"
+	"github.com/bkand1909/song-getter/models"
 )
 
 type Parser struct {

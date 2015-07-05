@@ -1,8 +1,8 @@
 package utils
 
 import (
-	"bkand1909/song-getter/models"
 	"errors"
+	"github.com/bkand1909/song-getter/models"
 	"log"
 	"strconv"
 	"strings"

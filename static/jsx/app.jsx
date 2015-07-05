@@ -3,6 +3,7 @@ var Box = React.createClass({
 		return (
 			<div className="Box">
 				<input placeholder="Test"/>
+				<a className="waves-effect waves-light btn">Click</a>
 			</div>
 		);
 	}
