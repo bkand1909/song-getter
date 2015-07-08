@@ -8,9 +8,11 @@ type Song struct {
 	Performer string
 	Lyric     string
 	Type      string
+	Filename  string
 }
 
 type Album struct {
-	Title string
-	Url   string
+	Title  string
+	Url    string
+	Folder string
 }

@@ -11,6 +11,7 @@ func configureStaticPath() {
 	beego.SetStaticPath("/css", "static/css")
 	beego.SetStaticPath("/font", "static/font")
 	beego.SetStaticPath("/img", "static/img")
+	beego.SetStaticPath("/file", "static/file")
 }
 
 func main() {
