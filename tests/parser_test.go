@@ -1,8 +1,8 @@
 package tests
 
 import (
-	"bkand1909/song-getter/utils"
 	"fmt"
+	"github.com/bkand1909/song-getter/utils"
 	. "github.com/smartystreets/goconvey/convey"
 	"testing"
 )

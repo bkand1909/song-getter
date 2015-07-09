@@ -1,7 +1,7 @@
 package tests
 
 import (
-	_ "bkand1909/song-getter/routers"
+	_ "github.com/bkand1909/song-getter/routers"
 	"net/http"
 	"net/http/httptest"
 	"path/filepath"
