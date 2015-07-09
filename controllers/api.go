@@ -46,6 +46,7 @@ func (c *ApiController) Get() {
 		song.Filename = song.Title + " - " + song.Performer + "." + song.Type
 		// song.Filename = album.Folder + "/" + song.Filename
 		resp := grequests.Get(song.Source, nil)
+		beego.Info("Download status:", resp.StatusCode)
 		if resp.Error != nil {
 			beego.Error(resp.Error.Error())
 		} else {
