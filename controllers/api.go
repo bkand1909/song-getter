@@ -6,7 +6,6 @@ import (
 	"github.com/bkand1909/song-getter/Godeps/_workspace/src/github.com/astaxie/beego"
 	"github.com/bkand1909/song-getter/Godeps/_workspace/src/github.com/levigross/grequests"
 	"github.com/bkand1909/song-getter/utils"
-	"os"
 )
 
 type ApiController struct {
@@ -30,17 +29,19 @@ func (c *ApiController) Get() {
 	_, album := parser.ToAlbum(url, html)
 	staticDir := beego.AppPath + "/" + beego.StaticDir["/file"]
 	album.Folder = staticDir + "/" + album.Title
-	if err := os.Mkdir(album.Folder, 0777); err != nil {
-		beego.Error(err.Error())
-		return
-	}
+	// if err := os.Mkdir(album.Folder, 0777); err != nil {
+	// 	beego.Error(err.Error())
+	// 	return
+	// }
 	beego.Info("Album folder: " + album.Folder + ".zip")
-	zfile, err := os.Create(album.Folder + ".zip")
-	if err != nil {
-		beego.Error(err.Error())
-		return
-	}
-	w := zip.NewWriter(zfile)
+	// zfile, err := os.Create(album.Folder + ".zip")
+	// if err != nil {
+	// beego.Error(err.Error())
+	// return
+	// }
+	// w := zip.NewWriter(zfile)
+	w := zip.NewWriter(c.Ctx.ResponseWriter)
+	// album.Song = album.Song[0:1]
 	for i, song := range album.Song {
 		beego.Info("Downloading: " + song.Source)
 		song.Filename = song.Title + " - " + song.Performer + "." + song.Type
@@ -60,11 +61,16 @@ func (c *ApiController) Get() {
 			}
 		}
 	}
-	err = w.Close()
+	c.Ctx.Output.Header("Content-Description", "File Transfer")
+	c.Ctx.Output.Header("Content-Type", "application/octet-stream")
+	c.Ctx.Output.Header("Content-Transfer-Encoding", "binary")
+	c.Ctx.Output.Header("Expires", "0")
+	c.Ctx.Output.Header("Cache-Control", "must-revalidate")
+	c.Ctx.Output.Header("Pragma", "public")
+	c.Ctx.Output.Header("Content-Disposition", "attachment; filename="+album.Title+".zip")
+	err := w.Close()
 	if err != nil {
 		beego.Error(err.Error())
 		return
 	}
-	c.Data["json"] = &album
-	c.ServeJson()
 }

@@ -18,7 +18,9 @@ func configureStaticPath() {
 
 func main() {
 	configureStaticPath()
-	port, _ := strconv.Atoi(os.Getenv("PORT"))
-	beego.HttpPort = port
+	if beego.AppConfig.DefaultInt("httpport", 0) == 0 {
+		port, _ := strconv.Atoi(os.Getenv("PORT"))
+		beego.HttpPort = port
+	}
 	beego.Run()
 }
