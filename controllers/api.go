@@ -57,7 +57,11 @@ func (c *ApiController) Get() {
 			}
 		}
 	}
-	w.Close()
+	err = w.Close()
+	if err != nil {
+		beego.Error(err.Error())
+		return
+	}
 	c.Data["json"] = &album
 	c.ServeJson()
 }
