@@ -1,6 +1,9 @@
 {
 	"ImportPath": "github.com/bkand1909/song-getter",
 	"GoVersion": "go1.4.2",
+	"Packages": [
+		"./..."
+	],
 	"Deps": [
 		{
 			"ImportPath": "github.com/PuerkitoBio/goquery",
@@ -17,12 +20,26 @@
 			"Rev": "a89f14d80dab442927bdc11d641aa1250ab8ad71"
 		},
 		{
+			"ImportPath": "github.com/jtolds/gls",
+			"Rev": "9a4a02dbe491bef4bab3c24fd9f3087d6c4c6690"
+		},
+		{
 			"ImportPath": "github.com/levigross/grequests",
 			"Rev": "569dad4ba5d9244a7f668320e7c3ad68c635e2de"
 		},
 		{
 			"ImportPath": "github.com/rainycape/unidecode",
 			"Rev": "836ef0a715aedf08a12d595ed73ec8ed5b288cac"
+		},
+		{
+			"ImportPath": "github.com/smartystreets/assertions",
+			"Comment": "1.5.0-386-g22fd8e1",
+			"Rev": "22fd8e1982688f4ff04e8e9ec6feae2c2459460d"
+		},
+		{
+			"ImportPath": "github.com/smartystreets/goconvey/convey",
+			"Comment": "1.5.0-395-g46d11c2",
+			"Rev": "46d11c2f4d1a1ad6e2e776eed8e0c67c088dc952"
 		},
 		{
 			"ImportPath": "golang.org/x/net/html",

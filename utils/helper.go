@@ -2,10 +2,10 @@ package utils
 
 import (
 	"encoding/json"
-	"github.com/PuerkitoBio/goquery"
-	"github.com/levigross/grequests"
-	"github.com/rainycape/unidecode"
-	"gopkg.in/mgo.v2/bson"
+	"github.com/bkand1909/song-getter/Godeps/_workspace/src/github.com/PuerkitoBio/goquery"
+	"github.com/bkand1909/song-getter/Godeps/_workspace/src/github.com/levigross/grequests"
+	"github.com/bkand1909/song-getter/Godeps/_workspace/src/github.com/rainycape/unidecode"
+	"github.com/bkand1909/song-getter/Godeps/_workspace/src/gopkg.in/mgo.v2/bson"
 	"io/ioutil"
 	"net/http"
 	"net/url"
