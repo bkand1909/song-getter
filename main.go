@@ -3,6 +3,8 @@ package main
 import (
 	"github.com/bkand1909/song-getter/Godeps/_workspace/src/github.com/astaxie/beego"
 	_ "github.com/bkand1909/song-getter/routers"
+	"os"
+	"strconv"
 )
 
 func configureStaticPath() {
@@ -16,5 +18,7 @@ func configureStaticPath() {
 
 func main() {
 	configureStaticPath()
+	port, _ := strconv.Atoi(os.Getenv("PORT"))
+	beego.HttpPort = port
 	beego.Run()
 }
