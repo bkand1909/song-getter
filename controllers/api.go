@@ -34,6 +34,7 @@ func (c *ApiController) Get() {
 		beego.Error(err.Error())
 		return
 	}
+	beego.Info("Album folder: " + album.Folder + ".zip")
 	zfile, err := os.Create(album.Folder + ".zip")
 	if err != nil {
 		beego.Error(err.Error())
@@ -50,10 +51,11 @@ func (c *ApiController) Get() {
 		} else {
 			beego.Info(fmt.Sprintf("Downloaded %s. Done: %d/%d.", song.Source, i+1, len(album.Song)))
 			wr, err := w.Create(song.Filename)
+			if err == nil {
+				_, err = wr.Write(resp.Bytes())
+			}
 			if err != nil {
 				beego.Error(err.Error())
-			} else {
-				wr.Write(resp.Bytes())
 			}
 		}
 	}
