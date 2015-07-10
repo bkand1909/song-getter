@@ -34,13 +34,13 @@ func (c *ApiController) Get() {
 	// 	return
 	// }
 	beego.Info("Album folder: " + album.Folder + ".zip")
-	// zfile, err := os.Create(album.Folder + ".zip")
-	// if err != nil {
-	// beego.Error(err.Error())
-	// return
-	// }
-	// w := zip.NewWriter(zfile)
-	w := zip.NewWriter(c.Ctx.ResponseWriter)
+	zfile, err := os.Create(album.Folder + ".zip")
+	if err != nil {
+		beego.Error(err.Error())
+		return
+	}
+	w := zip.NewWriter(zfile)
+	// w := zip.NewWriter(c.Ctx.ResponseWriter)
 	// album.Song = album.Song[0:1]
 	for i, song := range album.Song {
 		beego.Info("Downloading: " + song.Source)
@@ -61,16 +61,17 @@ func (c *ApiController) Get() {
 			}
 		}
 	}
-	c.Ctx.Output.Header("Content-Description", "File Transfer")
-	c.Ctx.Output.Header("Content-Type", "application/octet-stream")
-	c.Ctx.Output.Header("Content-Transfer-Encoding", "binary")
-	c.Ctx.Output.Header("Expires", "0")
-	c.Ctx.Output.Header("Cache-Control", "must-revalidate")
-	c.Ctx.Output.Header("Pragma", "public")
-	c.Ctx.Output.Header("Content-Disposition", "attachment; filename="+album.Title+".zip")
-	err := w.Close()
-	if err != nil {
+	// c.Ctx.Output.Header("Content-Description", "File Transfer")
+	// c.Ctx.Output.Header("Content-Type", "application/octet-stream")
+	// c.Ctx.Output.Header("Content-Transfer-Encoding", "binary")
+	// c.Ctx.Output.Header("Expires", "0")
+	// c.Ctx.Output.Header("Cache-Control", "must-revalidate")
+	// c.Ctx.Output.Header("Pragma", "public")
+	// c.Ctx.Output.Header("Content-Disposition", "attachment; filename="+album.Title+".zip")
+	if err := w.Close(); err != nil {
 		beego.Error(err.Error())
 		return
 	}
+	c.Data["json"] = `{"success":"true"}`
+	c.ServeJson()
 }
