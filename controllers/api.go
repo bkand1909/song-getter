@@ -26,8 +26,13 @@ func (c *ApiController) Get() {
 	url := c.Input().Get("url")
 	resp := utils.GetUrl(url, nil)
 	html := resp.String()
+	beego.Info(fmt.Sprint("Get from url[%s] return html length: [%d]", url, len(html)))
 	var parser utils.ZingParser
-	_, album := parser.ToAlbum(url, html)
+	err, album := parser.ToAlbum(url, html)
+	if err != nil {
+		beego.Error(err.Error())
+		return
+	}
 	staticDir := beego.AppPath + "/" + beego.StaticDir["/file"]
 	album.Folder = staticDir + "/" + album.Title
 	// if err := os.Mkdir(album.Folder, 0777); err != nil {
